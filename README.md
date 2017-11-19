@@ -16,11 +16,11 @@ lein uberjar
 ### Roadmap
 The roadmap below addresses the coming features, with highest priority features appearing before lower priority features.
 
-- Deployable Instagram bots.
+- Deployable Instagram bots. :fire:
     - Attaching users and tags to bots as work.
-- Easy (clean) creation and deletion of bots
-- Frontend to Tungsten
-- Monitoring of bots
+- Easy (clean) creation and deletion of bots :wrench:
+- Frontend to Tungsten :sparkler:
+- Monitoring of bots :chart_with_upwards_trend:
     - Performance metrics.
     - Accuracy of target hits.
  
@@ -33,4 +33,4 @@ The roadmap below addresses the coming features, with highest priority features 
 
 Copyright © 2017 Aaron Steed
 
-Free software, hell yeah!
+Free software, hell yeah :bangbang:
