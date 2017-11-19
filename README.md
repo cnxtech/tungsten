@@ -1,36 +1,35 @@
-# tungsten
+# Tungsten
 
-FIXME: description
-
-## Installation
-
-Download from http://example.com/FIXME.
+![alt text](https://github.com/aaronsteed/tungsten/raw/master/resources/logo/tungsten.png "Tungsten logo")
+Instagram bots-as-a-service. 
+> Bots as easy as turning on a light bulb. 
 
 ## Usage
 
-FIXME: explanation
+    $ java -jar tungsten-<version>-standalone.jar [args]
+    
+## Building from source 
+```
+lein uberjar
+```
+### Roadmap
+The roadmap below addresses the coming features, with highest priority features appearing before lower priority features.
 
-    $ java -jar tungsten-0.1.0-standalone.jar [args]
+- Deployable Instagram bots.
+    - Attaching users and tags to bots as work.
+- Easy (clean) creation and deletion of bots
+- Frontend to Tungsten
+- Monitoring of bots
+    - Performance metrics.
+    - Accuracy of target hits.
+ 
+### Technologies
+- Clojure
+- MongoDB
+- VueJS
 
-## Options
+### License
 
-FIXME: listing of options this app accepts.
+Copyright © 2017 Aaron Steed
 
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2017 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Free software, hell yeah!

@@ -4,7 +4,8 @@
   (:use ring.adapter.jetty)
   (:require [tungsten.configuration :as config]
             [tungsten.logger :as logger]
-            [clj-json.core :as json]))
+            [clj-json.core :as json])
+  (:gen-class))
 
 (defn json-response [data & [status]]
   {:status  (or status 200)

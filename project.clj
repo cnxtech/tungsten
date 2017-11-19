@@ -13,6 +13,6 @@
                  [clj-json "0.5.3"]
                  [com.taoensso/timbre "4.10.0"]
                  [com.novemberain/monger "3.1.0"]]
-  :main ^:skip-aot tungsten.core
+  :main tungsten.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
