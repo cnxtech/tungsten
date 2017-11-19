@@ -1,6 +1,7 @@
 # Tungsten
 
 ![alt text](https://github.com/aaronsteed/tungsten/raw/master/resources/logo/tungsten.png "Tungsten logo")
+
 Instagram bots-as-a-service. 
 > Bots as easy as turning on a light bulb. 
 
