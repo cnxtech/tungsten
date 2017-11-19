@@ -1,4 +1,5 @@
 # Tungsten
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/aaronsteed/tungsten.svg?columns=all)](https://waffle.io/aaronsteed/tungsten) 
 
 ![alt text](https://github.com/aaronsteed/tungsten/raw/master/resources/logo/tungsten.png "Tungsten logo")
 
