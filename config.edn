@@ -1,4 +1,4 @@
-{:log-configuration {:log-mode :std-ou ; :std-out or :log-file
+{:log-configuration {:log-mode :file ; :std-out or :file
                      :log-file-path "."} ; required when logging to file
  :mongo-db {:host "localhost"
             :port 3070

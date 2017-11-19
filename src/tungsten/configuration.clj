@@ -6,13 +6,13 @@
 
 (def Configuration-Schema
       "Configuration file schema"
-  {:log-configuration {:log-mode (or (schema/eq :std-out)
-                                     (schema/eq :log-file))
+  {:log-configuration {:log-mode (schema/enum :std-out :file)
                        (schema/optional-key :log-file-path) schema/Str}
    :mongo-db {:host schema/Str
               :port schema/Int
-              :user schema/Str
-              :password schema/Str}})
+              :username schema/Str
+              :password schema/Str
+              :database-name schema/Str}})
 
 (defn read-configuration [config-path]
   (let [configuration (aero/read-config config-path)]
