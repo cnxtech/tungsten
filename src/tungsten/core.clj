@@ -22,13 +22,13 @@
     wrap-json-params))
 
 (def system
-  "Used for storing objects/connections to services"
+  "Used for storing service objects and connections to services"
   (atom {}))
 
 (defn -main
   [& args]
-  (logger/set-default-config)
   (try
     (let [app-config (config/read-configuration "/Users/aaronsteed/GitHub/tungsten/config.edn")]
-      (config/set-configuration app-config system))
+      (config/set-configuration app-config system)
+      (logger/log :critical "This message"))
     (catch Exception e (logger/log :critical (.getMessage e)))))
