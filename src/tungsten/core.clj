@@ -4,8 +4,10 @@
   (:use ring.adapter.jetty)
   (:require [tungsten.configuration :as config]
             [tungsten.logger :as logger]
-            [clj-json.core :as json])
-  (:gen-class))
+            [clj-json.core :as json]
+            [tungsten.database :as db])
+  (:gen-class)
+  (:import (com.mongodb MongoSocketOpenException)))
 
 (defn json-response [data & [status]]
   {:status  (or status 200)
@@ -30,6 +32,8 @@
   [& args]
   (try
     (let [app-config (config/read-configuration "/Users/aaronsteed/GitHub/tungsten/config.edn")]
-      (config/set-configuration app-config system)
-      (logger/log :critical "This message"))
+      (try
+        (config/set-configuration app-config system)
+        (catch MongoSocketOpenException e (logger/log "we're fucked")))
+      (db/insert-doc {:me "you"} "tungsten" system))
     (catch Exception e (logger/log :critical (.getMessage e)))))

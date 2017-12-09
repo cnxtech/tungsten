@@ -1,8 +1,9 @@
-{:log-configuration {:log-mode :file    ; :std-out or :file
-                     :log-file-path "." ; required when logging to file
-                     :log-level :info}  ; Default logging level
+{:log-configuration {:mode :file    ; :std-out or :file
+                     :file-path "." ; required when logging to file
+                     :level :info}  ; Default logging level
  :mongo-db {:host "localhost"
             :port 27017
-            :username "user"
+            :username "tungsten-app"
             :password "password"
-            :database-name "db-name"}}
+            :database-name "tungsten"
+            :collection-name "tungsten"}}

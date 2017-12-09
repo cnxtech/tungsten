@@ -14,5 +14,5 @@
                  [com.taoensso/timbre "4.10.0"]
                  [com.novemberain/monger "3.1.0"]]
   :main tungsten.core
-  :target-path "target/%s"
+  :target-path "target/"
   :profiles {:uberjar {:aot :all}})
