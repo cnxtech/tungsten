@@ -1,7 +1,7 @@
 (ns tungsten.logger
   (:require [clj-json.core :as json]
             [taoensso.timbre :as timbre
-             :refer [info debug warn fatal error]]
+             :refer [info debug warn fatal error debug]]
             [clojure.string
              :refer [join ends-with?]]
             [taoensso.timbre.appenders.3rd-party.rolling :as roll]
@@ -15,35 +15,40 @@
     :warn :minor
     :fatal :major
     :error :critical
-    :info :info))
+    :info :info
+    :debug :debug))
 
 (defn get-path [path]
   (if (ends-with? path "/")
     (join [path file-name])
     (join "/" [path file-name])))
 
-(defn log-output-fn [{:keys [timestamp_ level msg_] :as args}]
+(defn logger-fn [{:keys [timestamp_ level msg_] :as args}]
   (json/generate-string {:timestamp @timestamp_
                          :level (translate-level level)
                          :message msg_}))
 
 (defn log-file-mode
-  ([] (timbre/merge-config!
-        {:appenders {:println {:enabled? true
-                               :output-fn log-output-fn}}}))
-  ([log-file-path] (timbre/merge-config!
-                     {:appenders {:println {:enabled? true
-                                            :output-fn log-output-fn}
+  ([level]
+   (timbre/merge-config!
+     {:level level
+         :appenders {:println {:enabled? true
+                               :output-fn logger-fn}}}))
+  ([log-file-path level] (timbre/merge-config!
+                           {:level level
+                      :appenders {:println {:enabled? true
+                                            :output-fn logger-fn}
                                   :rolling
                                   (merge (roll/rolling-appender
                                            {:path (get-path log-file-path)
                                             :pattern rolling-pattern})
-                                         {:output-fn log-output-fn})}})))
+                                         {:output-fn logger-fn})}})))
 
 (defn set-log-configuration [log-configuration]
-  (case (:log-mode log-configuration)
-    :std-out (log-file-mode)
-    :file (log-file-mode (:log-file-path log-configuration))))
+  (case (:mode log-configuration)
+    :std-out (log-file-mode (:level log-configuration))
+    :file (log-file-mode (:file-path log-configuration)
+                         (:level log-configuration))))
 
 (defn log
   ([message] (log :info message))
@@ -52,4 +57,5 @@
      :minor (warn message)
      :major (fatal message)
      :critical (error message)
-     :info (info message))))
+     :info (info message)
+     :debug (debug message))))

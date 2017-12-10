@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module cursive.leiningen.project.LeiningenProjectsManager.displayName="tungsten:0.0.1-SNAPSHOT" cursive.leiningen.project.LeiningenProjectsManager.isLeinModule="true" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <output url="file://$MODULE_DIR$/target/default+debug+test+offline+uberjar+update/classes" />
-    <output-test url="file://$MODULE_DIR$/target/default+debug+test+offline+uberjar+update/classes" />
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/classes" />
     <exclude-output />
     <option name="createStubs" value="true" />
     <content url="file://$MODULE_DIR$">
@@ -10,6 +10,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/configdb" />
+      <excludeFolder url="file://$MODULE_DIR$/db" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/target/base+system+user+dev+debug+test+offline+uberjar+update" />
       <excludeFolder url="file://$MODULE_DIR$/target/default+debug+test+offline+uberjar+update" />
