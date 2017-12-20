@@ -13,3 +13,5 @@ pom.xml.asc
 *.log
 /db/
 /configdb/
+/dist
+/node_modules

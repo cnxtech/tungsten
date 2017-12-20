@@ -1,0 +1,79 @@
+{
+  "name": "tungsten-frontend",
+  "version": "1.0.0",
+  "description": "Instagram bots as a service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/.bin/webpack-dev-server",
+    "analysis": "NODE_ENV=debug PLATFORM=web node_modules/.bin/webpack --profile",
+    "build": "NODE_ENV=development PLATFORM=web node_modules/.bin/webpack -p",
+    "deploy": "NODE_ENV=production PLATFORM=web node_modules/.bin/webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronsteed/tungsten.git"
+  },
+  "keywords": [
+    "clojure",
+    "js",
+    "node",
+    "vue",
+    "instagram",
+    "bots",
+    "followers",
+    "hashtags"
+  ],
+  "author": "Aaron Steed & Gary Byrne",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/aaronsteed/tungsten/issues"
+  },
+  "homepage": "https://github.com/aaronsteed/tungsten#readme",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "chunk-manifest-webpack-plugin": "^1.1.2",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-vue": "^2.1.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-template": "^6.1.0",
+    "json-loader": "^0.5.7",
+    "lodash": "^4.17.4",
+    "node-sass": "^4.7.2",
+    "offline-plugin": "^4.8.5",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
+    "uglifyjs-webpack-plugin": "^1.1.4",
+    "vue": "^2.5.12",
+    "vue-cli": "^2.9.2",
+    "vue-hot-reload-api": "^2.2.4",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^13.6.0",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.10.0",
+    "webpack-bundle-analyzer": "^2.9.1",
+    "webpack-chunk-hash": "^0.5.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.7.1"
+  }
+}
