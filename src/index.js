@@ -1,8 +1,8 @@
 import Vue from 'vue';
+import App from './components/App';
 
-new Vue({ // eslint-disable-line no-new
-  el: '.vue-app',
-  data: {
-    welcome: 'Hello Vue!',
-  },
-});
+new Vue({
+    el: '#app',
+    template: '<App/>',
+    components: { App }
+})

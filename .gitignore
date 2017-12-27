@@ -15,3 +15,4 @@ pom.xml.asc
 /configdb/
 /dist
 /node_modules
+/coverage

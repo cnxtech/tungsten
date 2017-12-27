@@ -4,15 +4,23 @@
   "description": "Instagram bots as a service",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node_modules/.bin/webpack-dev-server",
-    "analysis": "NODE_ENV=debug PLATFORM=web node_modules/.bin/webpack --profile",
-    "build": "NODE_ENV=development PLATFORM=web node_modules/.bin/webpack -p",
-    "deploy": "NODE_ENV=production PLATFORM=web node_modules/.bin/webpack -p"
+    "analysis": "NODE_ENV=debug PLATFORM=web node_modules/.bin/webpack --profile --optimize-minimize",
+    "build": "NODE_ENV=development PLATFORM=web node_modules/.bin/webpack -p --optimize-minimize",
+    "deploy": "NODE_ENV=production PLATFORM=web node_modules/.bin/webpack -p --optimize-minimize",
+    "lint": "eslint --ext .js,.vue src",
+    "test": "./node_modules/.bin/jest",
+    "coverage": "npm run test -- --coverage"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aaronsteed/tungsten.git"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "./node_modules/babel-jest",
+      ".*\\.(vue)$": "./node_modules/jest-vue-preprocessor"
+    }
   },
   "keywords": [
     "clojure",
@@ -31,10 +39,14 @@
   },
   "homepage": "https://github.com/aaronsteed/tungsten#readme",
   "dependencies": {
+    "babel": "^6.23.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
+    "babel-jest": "^22.0.4",
     "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
     "chunk-manifest-webpack-plugin": "^1.1.2",
     "css-loader": "^0.28.7",
     "eslint": "^4.13.1",
@@ -55,19 +67,23 @@
     "grunt-cli": "^1.2.0",
     "html-webpack-plugin": "^2.30.1",
     "html-webpack-template": "^6.1.0",
+    "jest": "^22.0.3",
+    "jest-vue-preprocessor": "^1.3.1",
+    "jsdom": "^11.5.1",
     "json-loader": "^0.5.7",
     "lodash": "^4.17.4",
     "node-sass": "^4.7.2",
-    "offline-plugin": "^4.8.5",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "uglifyjs-webpack-plugin": "^1.1.4",
-    "vue": "^2.5.12",
+    "vue": "^2.5.13",
     "vue-cli": "^2.9.2",
     "vue-hot-reload-api": "^2.2.4",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^13.6.0",
     "vue-router": "^3.0.1",
+    "vue-server-renderer": "^2.5.13",
+    "vue-style-loader": "^3.0.3",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.9.1",
