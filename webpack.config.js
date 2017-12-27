@@ -4,14 +4,13 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 const WebpackChunkHash = require('webpack-chunk-hash');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
     context: path.resolve(__dirname),
 	entry: {
 		app: './src/index.js',
-		vendor: ['vue', 'vue-router', 'offline-plugin/runtime'],
+		vendor: ['vue', 'vue-router'],
 	},
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -21,21 +20,35 @@ const config = {
     module: {
         rules: [
             {
-                enforce: "pre",
-                test: /\.(js|vue)$/,
-                exclude: /node_modules/,
-                loader: "eslint-loader",
+                test: /\.vue$/,
+                loader: 'vue-loader',
                 options: {
-                    formatter: require('eslint-friendly-formatter')
+                    loaders: {
+                        'scss': [
+                            'vue-style-loader',
+                            'css-loader',
+                            'sass-loader'
+                        ],
+                        'sass': [
+                            'vue-style-loader',
+                            'css-loader',
+                            'sass-loader?indentedSyntax'
+                        ]
+                    }
                 }
             },
-	        {
+            {
 		        test: /\.(jpg|jpeg|gif|png|svg|woff|woff2)$/,
 		        use: {
 			        loader: 'file-loader',
 			        options: { name: '[name].[hash].[ext]' },
 		        },
 	        },
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            }
         ],
         loaders: [
             {
@@ -62,7 +75,7 @@ const config = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
-            }
+            },
         ]
     },
     resolve: {
@@ -95,9 +108,21 @@ const config = {
 		    name: 'vendor',
 	    }),
     ],
-	devServer: {
-		historyApiFallback: true,
-	},
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        },
+        extensions: ['*', '.js', '.vue', '.json']
+    },
+    devServer: {
+        historyApiFallback: true,
+        noInfo: true,
+        overlay: true
+    },
+    performance: {
+        hints: false
+    },
+    devtool: '#eval-source-map'
 };
 
 /* Production */
@@ -113,21 +138,7 @@ if (process.env.NODE_ENV === 'production') {
 			manifestVariable: 'webpackManifest',
 			inlineManifest: true,
 		}),
-		new OfflinePlugin({
-			AppCache: false,
-			ServiceWorker: { events: true },
-		}),
 	];
-
-	const runtime = require('offline-plugin/runtime');
-	runtime.install({
-		onUpdateReady() {
-			runtime.applyUpdate();
-		},
-		onUpdated() {
-			window.location.reload();
-		},
-	});
 }
 
 /* bundle analyzing */
