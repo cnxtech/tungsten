@@ -1,5 +1,6 @@
 # Tungsten
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/aaronsteed/tungsten.svg?columns=all)](https://waffle.io/aaronsteed/tungsten) 
+[![Build Status](https://travis-ci.org/garyb1/tungsten.png)](https://travis-ci.org/garyb1/tungsten)
 
 ![alt text](https://github.com/aaronsteed/tungsten/raw/master/resources/logo/tungsten.png "Tungsten logo")
 
@@ -32,6 +33,6 @@ The roadmap below addresses the coming features, with highest priority features 
 
 ### License
 
-Copyright © 2017 Aaron Steed
+Copyright © 2017 Aaron Steed & Gary Byrne
 
 Free software, hell yeah :bangbang:
