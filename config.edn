@@ -1,13 +1,15 @@
-{:log-configuration {:mode :file    ; :std-out or :file
-                     :file-path "." ; required when logging to file
-                     :level :info}  ; Default logging level
- :mongo-db {:host "localhost"
+{:log-configuration {:mode :file                     ; :std-out or :file
+                     :file-path "."                  ; required when logging to file
+                     :level :info                    ; Default logging level
+                     :file-name "tungsten.log"}
+ :mongo-db {:host "127.0.0.1"
             :port 27017
             :username "tungsten-app"
             :password "password"
             :database-name "tungsten"
-            :collection-name "tungsten"}
- :rest-server {:port 8090
-               :host "127.0.0.1"
-               :max-threads 80
-               :min-threads 90}}
+            :collection-name "tungsten"
+            :options {:socket-timeout 10
+                      :auto-connect-retry false
+                      :max-auto-connect-retry-time 10000
+                      :connect-timeout 10}}
+ :rest-server {:port 8090}}

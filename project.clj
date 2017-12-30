@@ -12,6 +12,7 @@
                  [aero "1.1.2"]
                  [prismatic/schema "1.1.7"]
                  [clj-json "0.5.3"]
+                 [http-kit "2.2.0"]
                  [com.taoensso/timbre "4.10.0"]
                  [com.novemberain/monger "3.1.0"]
                  [ring "1.6.1"]]
