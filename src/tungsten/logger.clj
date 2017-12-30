@@ -44,7 +44,7 @@
                                             :pattern rolling-pattern})
                                          {:output-fn logger-fn})}})))
 
-(defn set-log-configuration [log-configuration]
+(defn set-log-config [log-configuration]
   (case (:mode log-configuration)
     :std-out (log-file-mode (:level log-configuration))
     :file (log-file-mode (:file-path log-configuration)

@@ -2,7 +2,9 @@
   (:require [aero.core :as aero]
             [schema.core :as schema]
             [tungsten.logger :as logger]
-            [tungsten.database :as db])
+            [tungsten.database :as db]
+            [tungsten.webserver :as webserver]
+            [tungsten.application :as app])
   (:import (com.mongodb MongoSocketOpenException)))
 
 (def Configuration-Schema
@@ -15,7 +17,12 @@
               :username schema/Str
               :password schema/Str
               :database-name schema/Str
-              :collection-name schema/Str}})
+              :collection-name schema/Str}
+   :rest-server {:port schema/Int
+                 (schema/optional-key :max-threads) schema/Int
+                 (schema/optional-key :min-threads) schema/Int
+                 (schema/optional-key :host) schema/Str
+                 (schema/optional-key :async?) schema/Bool}})
 
 (defn read-configuration [config-path]
   (let [configuration (aero/read-config config-path)]
@@ -23,7 +30,9 @@
       configuration)))
 
 (defn set-configuration [app-config system]
-  (logger/set-log-configuration (:log-configuration app-config))
-  (try
-    (db/set-db-configuration (:mongo-db app-config) system)
-    (catch Exception e (println "we're fucked"))))
+  (logger/set-log-config (:log-configuration app-config))
+  (let [application
+        {:database (db/set-db-config (:mongo-db app-config) system)
+         :webserver (webserver/set-webserver-config
+                      (:rest-server app-config) system)}]
+    (app/map->Tungsten application)))
