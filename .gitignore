@@ -13,6 +13,7 @@ pom.xml.asc
 *.log
 /db/
 /configdb/
+/tungsten.log.*
 /dist
 /node_modules
 /coverage

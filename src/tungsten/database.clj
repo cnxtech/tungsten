@@ -10,19 +10,18 @@
   "Database definition"
   (connect [x] "Connects to a database"))
 
-(defrecord MongoDB [username database-name password host port]
+(defrecord MongoDB [username database-name password host port system]
   Database
-  (connect [x]
-    ; Do something here
-    nil))
+  (connect [db]
+    (swap! system assoc :db (monger/get-db (monger/connect db) "tungsten"))))
 
-(defn insert-doc [document collection system]
-  (monger-coll/insert-and-return (:db @system) collection document))
+(def collection-name "tungsten")
 
-(defn set-db-configuration [db-config system]
+(defn insert-doc [document system]
+  (monger-coll/insert-and-return (:db @system) collection-name document))
+
+(defn set-db-config [db-config system]
   (let [credentials (create (:username db-config)
                             (:database-name db-config)
                             (:password db-config))]
-    (swap! system assoc :db (monger/get-db
-                              (monger/connect db-config)
-                              "tungsten"))))
+    (map->MongoDB (assoc db-config :system system))))
