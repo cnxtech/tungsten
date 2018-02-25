@@ -11,5 +11,4 @@
 (defn -main
   [& args]
   (let [app-config (config/read-configuration "/Users/aaronsteed/GitHub/tungsten/config.edn")]
-    (.start (config/set-configuration app-config application/system-atom))
-    (logger/log "Application started")))
+    (.start (config/set-configuration app-config application/system-atom))))
