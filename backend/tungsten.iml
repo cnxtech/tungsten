@@ -5,15 +5,11 @@
     <output-test url="file://$MODULE_DIR$/target/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/dev-resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/dev-resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/configdb" />
-      <excludeFolder url="file://$MODULE_DIR$/db" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
-      <excludeFolder url="file://$MODULE_DIR$/target/base+system+user+dev+debug+test+offline+uberjar+update" />
-      <excludeFolder url="file://$MODULE_DIR$/target/default+debug+test+offline+uberjar+update" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -53,6 +49,7 @@
     <orderEntry type="library" name="Leiningen: org.clojure/spec.alpha:0.1.143" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.analyzer.jvm:0.7.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.analyzer:0.6.9" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/tools.cli:0.3.5" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.macro:0.1.5" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.namespace:0.2.11" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.nrepl:0.2.12" level="project" />

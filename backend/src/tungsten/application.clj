@@ -1,15 +1,13 @@
 (ns tungsten.application
+  (:require [taoensso.timbre :as timbre])
   (:import [tungsten.database Database]
-           [tungsten.webserver Web_Server])
-  (:require [tungsten.logger :as logger]))
+           [tungsten.webserver Web_Server]))
 
 (defonce system-atom (atom {}))
 
 (defprotocol Application
-  "Application definition"
   (start [app] "Starts an applicaton"))
 
-; Defrecord of system components (Webserver, database etc...)
 (defrecord Tungsten [database webserver]
   Application
   (start [app]
@@ -19,4 +17,4 @@
                          (-> sys-atom
                              (assoc :database db)
                              (assoc :webserver webserver))) database webserver)
-    (logger/log :info "Application started.")))
+    (timbre/info "Application started.")))

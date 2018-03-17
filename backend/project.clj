@@ -10,6 +10,7 @@
                  [compojure "1.6.0"]
                  [com.taoensso/timbre "4.10.0"]
                  [aero "1.1.2"]
+                 [org.clojure/tools.cli "0.3.5"]
                  [prismatic/schema "1.1.7"]
                  [clj-json "0.5.3"]
                  [http-kit "2.2.0"]

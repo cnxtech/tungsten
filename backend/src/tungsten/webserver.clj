@@ -4,11 +4,13 @@
   (:use ring.middleware.json-params)
   (:require [clj-json.core :as json]
             [org.httpkit.server :as httpkit]
-            [tungsten.logger :as logger]))
+            [tungsten.logger :as logger]
+            [taoensso.timbre :as timbre]))
 
 (defn json-response [data & [status]]
   {:status  (or status 200)
-   :headers {"Content-Type" "application/json"}
+   :headers {"Content-Type" "ap
+   plication/json"}
    :body    (json/generate-string data)})
 
 (defroutes app-routes
@@ -33,8 +35,7 @@
   Web-Server
   (start [rest-server]
     (start-server (:handler rest-server) jetty-config)
-    (logger/log :info "REST Server started.")))
+    (timbre/info "REST Server started.")))
 
 (defn create-webserver [rest-server-config system]
-  (-> rest-server-config
-      (Rest-Server. rest-app)))
+  (Rest-Server. rest-server-config rest-app))
