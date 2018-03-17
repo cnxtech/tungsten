@@ -1,4 +1,4 @@
-/target
+backend/target/
 /classes
 /checkouts
 pom.xml
@@ -6,7 +6,7 @@ pom.xml.asc
 *.jar
 *.class
 /.lein-*
-/.nrepl-port
+backend/.nrepl-port
 .hgignore
 .hg/
 *.idea
